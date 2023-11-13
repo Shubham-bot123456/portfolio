@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
 import AboutMe from "./Aboutme";
-import objective from "./objectiveimg.png";
-import workexperience from "./workexperienceimg.jpeg";
-import { PiHamburgerDuotone } from "react-icons/pi";
-import { BsFillArrowRightCircleFill } from "react-icons/bs";
-import workimg from "./work3.png";
-import toolsused from "./toolsused.png";
-import skills from "./skills.png";
+import targetpng from "./targetpng.png";
+import { RxHamburgerMenu } from "react-icons/rx";
+import workexperience from "./f_workexperience.png";
+import toolsused from "./toolsusing.png";
+import skills from "./skillspng.png";
+import aboutmeicon from "./aboutmeicon.png";
 export default function Header() {
   const [boolean, setboolean] = useState(true);
   const [hamburgerboolean, sethamburgerboolen] = useState(false);
@@ -18,22 +17,23 @@ export default function Header() {
   useEffect(() => {
     if (boolean)
       setStyleAboutMe(
-        "text-white bg-gray-800 rounded-xl px-10 py-2.3 font-semibold  hover:text-teal-600 hover:transition-color border-2 border-teal-600 "
+        "text-teal-600 bg-gray-800 rounded-xl px-10 py-2.3 font-semibold  hover:text-teal-600 hover:transition-color border-2 border-teal-600 border-spacing-2"
       );
     else
       setStyleAboutMe(
-        "text-white bg-gray-800 rounded-xl px-10 py-2.3 font-semibold  hover:text-teal-600 hover:transition-color "
+        "text-slate-500 bg-gray-800 rounded-xl px-10 py-2.3 font-semibold  hover:text-teal-600 hover:transition-color"
       );
   }, [boolean]);
+
   return (
-    <div className="bg-gray-950 h-screen">
+    <div className="bg-gray-950 h-screen overflow-y-auto">
       <div className="flex justify-between px-5 py-3 ">
         <div className="flex justify-evenly">
-          <PiHamburgerDuotone
-            className="my-auto text-3xl bg-[#C70039] hover:border-white"
+          <RxHamburgerMenu
+            className="my-auto text-3xl hover:text-[#C70039] text-teal-500"
             onClick={() => sethamburgerboolen(!hamburgerboolean)}
-          ></PiHamburgerDuotone>
-          <h1 className=" pl-2 font-sans text-2xl font-bold text-teal-600 hover:text-red-400 hover:transition-colors">
+          ></RxHamburgerMenu>
+          <h1 className=" pl-3 my-auto font-sans text-2xl font-bold text-teal-600 hover:text-red-400 hover:transition-colors">
             Portfolio.
           </h1>
           <p className="text-slate-400 font-semibold inline-block align-baseline my-auto mx-4">
@@ -42,7 +42,9 @@ export default function Header() {
         </div>
         <div className="flex justify-evenly">
           <ul className="flex justify-evenly px-10">
-            <BsGithub className="my-auto text-2xl text-teal-600 hover:text-red-400 mx-6"></BsGithub>
+            <a className="my-auto" href="https://github.com/Shubham-bot123456/">
+              <BsGithub className="my-auto text-2xl text-teal-600 hover:text-red-400 mx-6"></BsGithub>
+            </a>
             <a
               href="https://www.linkedin.com/in/shubham-jadhav-90446519a/"
               className="my-auto text-2xl text-teal-600 hover:text-red-400"
@@ -61,14 +63,16 @@ export default function Header() {
       </div>
       <div className="flex">
         {hamburgerboolean ? (
-          <div className="h-screen bg-[#C70039]  text-white py-2 text-left transition-transform ease-in duration-1000 opacity-100">
+          <div className="bg-[#C70039] h-[233px] w-[200px] rounded-lg ml-2 text-white py-2 text-left transition-transform ease-in duration-1000 opacity-100">
             <ul>
               <div
                 onClick={() => {
                   setMode("objective");
                   setboolean(false);
                 }}
-                className="flex justify-between hover:text-red-400 hover:transition-color mx-2  rounded-lg border-white border-spacing-11 hover:bg-gray-800"
+                className={
+                  "flex justify-between hover:text-red-400 hover:transition-color mx-2  rounded-lg border-white border-spacing-11 hover:bg-gray-800 ${true?bg-gray-800:bg-none}"
+                }
               >
                 <li className="py-3 ml-8  mr-12  font-semibold hover:text-red-400 hover:transition-color">
                   Objective
@@ -122,13 +126,13 @@ export default function Header() {
                   {/* photo */}
                   <div>
                     <img
-                      src={objective}
+                      src={targetpng}
                       className="w-[150px] h-[100px] mx-auto"
                     ></img>
                   </div>
                   <div className="text-middle  my-auto mx-5x">
                     <h2 className="font-sans text-teal-600 font-bold text-xl">
-                      Objective
+                      OBJECTIVE
                     </h2>
                     <p className="my-2 mx-3 text-slate-500">
                       Motivated and skilled Java Backend Developer with 2 years
@@ -143,14 +147,17 @@ export default function Header() {
                   </div>
                 </div>
               ) : mode === "workexperience" ? (
-                <div className="mx-14 my-10 py-10 px-10 flex justify-evenly shadow-xl bg-[#A9DFBF] rounded-lg hover:bg-gray-500 hover:text-white hover:transition-colors">
-                  <img src={workimg} className="w-[300px] h-[180px]"></img>
+                <div className=" overflow-hidden mx-14 my-5 py-5 px-10  shadow-xl  rounded-lg  hover:transition-colors">
+                  <img
+                    src={workexperience}
+                    className="w-[120px] h-[120px] mx-auto my-3"
+                  ></img>
 
-                  <div className="text-left my-auto mx-5x">
-                    <h2 className="font-sans font-bold text-xl">
-                      Work Experience
+                  <div className="text-middle my-auto mx-5x">
+                    <h2 className="font-sans font-bold text-xl text-teal-600">
+                      WORK EXPERIENCE
                     </h2>
-                    <p className="my-2 mx-3">
+                    <p className="my-2 mx-3 text-slate-400">
                       Java Backend Developer, Tata Consultancy Services , Pune ,
                       Maharashtra. (Oct 2021 – Present) <br />
                       Developed and maintained RESTful APIs for a large-scale
@@ -186,42 +193,44 @@ export default function Header() {
                   </div>
                 </div>
               ) : mode === "toolsused" ? (
-                <div className="mx-14 my-10 py-10 px-10 flex justify-evenly shadow-xl bg-[#A9DFBF] rounded-lg hover:bg-gray-500 hover:text-white hover:transition-colors">
+                <div className="my-5 py-5">
                   <img
                     src={toolsused}
-                    className="w-[100px] h-[100px] my-auto mr-10"
+                    className="w-[100px] h-[100px] mx-auto mb-3"
                   ></img>
 
-                  <div className="text-left my-auto mx-5x">
-                    <h2 className="font-sans font-bold text-xl">Tools Used</h2>
-                    <p className="my-2 mx-3">
+                  <div className="text-middle">
+                    <h2 className="font-sans font-bold text-xl text-teal-600">
+                      Tools Used
+                    </h2>
+                    <p className="my-2 mx-3 text-slate-500">
                       IDE : Intellij Idea, Eclipse , Visual Studio Code ,
-                      Sublime Text , VIM.  Database Clients : DBeaver(Universal
-                      Client), Pg Admin. <br />
-                      API Testing : Postman. <br /> Git GUI Tools : Git
-                      Tortoise, Git GUI <br />
+                      Sublime Text , VIM. Database Clients : DBeaver(Universal
+                      Client), Pg Admin. API Testing : Postman. Git GUI Tools :
+                      Git Tortoise, Git GUI <br />
                       Other Tools : Notepad++, Beyond compare,
                     </p>
                   </div>
                 </div>
               ) : mode === "projectsundertaken" ? (
-                <div className="mx-14 my-10 py-10 px-10 flex justify-evenly shadow-xl bg-[#A9DFBF] rounded-lg hover:bg-gray-500 hover:text-white hover:transition-colors">
-                  <img src={skills} className="w-[300px] h-[180px]"></img>
+                <div className="mx-14 my-5 py-5 px-10">
+                  <img
+                    src={skills}
+                    className="w-[120px] h-[120px] mx-auto"
+                  ></img>
 
-                  <div className="text-left my-auto mx-5x">
-                    <h2 className="font-sans font-bold text-xl">Skills</h2>
-                    <p className="my-2 mx-3">
+                  <div className="my-auto mx-5x">
+                    <h2 className="font-sans font-bold text-xl text-teal-600">
+                      Skills
+                    </h2>
+                    <p className="my-2 mx-3 text-slate-500">
                       Programming Languages: Java, Javascript, SQL. <br /> Java
-                      Frameworks: Spring Boot, Hibernate, React JS (Basics){" "}
-                      <br />
-                      Well versed with IDE such as Intellij idea , Eclipse.{" "}
-                      <br />
-                      RESTful API Design and Implementation <br /> Database
-                      Management: PostgreSQL <br />
-                      Version Control: Git <br />
-                      Build Tools: Maven <br /> Heavy user of Terminal based
-                      editors such as VIM (NeoVim). <br /> Familiarity with
-                      Agile Methodologies <br />
+                      Frameworks: Spring Boot, Hibernate, React JS (Basics) Well
+                      versed with IDE such as Intellij idea , Eclipse. RESTful
+                      API Design and Implementation Database Management:
+                      PostgreSQL Version Control: Git Build Tools: Maven Heavy
+                      user of Terminal based editors such as VIM (NeoVim).
+                      Familiarity with Agile Methodologies <br />
                       Problem-Solving and Troubleshooting Skills <br /> Strong
                       Team Player and Effective Communicator <br />
                       Valuable experience working with the AWS Services such as
