@@ -1,12 +1,15 @@
 import React, { useState } from "react";
+import aboutmeicon from "./aboutmeicon.png";
 import myimage from "./shubhamimage.jpeg";
 
 export default function Aboutme() {
+  const [boolean, setboolean] = useState(false);
   return (
     <div className="mx-14 my-5 py-5 px-10 shadow-xl">
       <img
-        src={myimage}
-        className="mx-auto w-[200px] h-[200px] mb-3 rounded-full"
+        src={boolean ? myimage : aboutmeicon}
+        className="mx-auto w-[200px] h-[200px] mb-3 rounded-full border-teal-600 border-2 border-spacing-6 hover:transition-colors"
+        onClick={() => setboolean(!boolean)}
       ></img>
       <div>
         <h2 className="font-sans font-bold text-xl text-teal-600">ABOUT ME</h2>
