@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
 import AboutMe from "./Aboutme";
-import targetpng from "./targetpng.png";
-import { RxHamburgerMenu } from "react-icons/rx";
-import workexperience from "./f_workexperience.png";
-import toolsused from "./toolsusing.png";
-import skills from "./skillspng.png";
+
+import { FaChevronCircleDown } from "react-icons/fa";
+import Toolsused from "./Toolsused";
+
+import Objective from "./Objective";
+import { easeInOut, motion } from "framer-motion";
+import { IoIosArrowUp } from "react-icons/io";
+import Workexperience from "./Workexperience";
+import Skills from "./Skills";
+
 
 export default function Header() {
   const [boolean, setboolean] = useState(true);
@@ -14,6 +19,8 @@ export default function Header() {
   const [aboutMeButtonStyle, setStyleAboutMe] = useState(
     "text-white bg-gray-800 rounded-xl px-10 py-2.3 font-semibold  hover:text-teal-600 hover:transition-color"
   );
+
+
   useEffect(() => {
     if (boolean)
       setStyleAboutMe(
@@ -27,13 +34,9 @@ export default function Header() {
 
   return (
     <div className="flex flex-col justify-between">
-      <div className="bg-gray-950 h-screen overflow-y-auto ">
+      <div className="bg-gray-100 h-screen overflow-y-auto ">
         <div className="flex justify-between px-5 py-3 ">
           <div className="flex justify-evenly">
-            <RxHamburgerMenu
-              className="my-auto text-3xl hover:text-[#C70039] text-teal-500"
-              onClick={() => sethamburgerboolen(!hamburgerboolean)}
-            ></RxHamburgerMenu>
             <h1 className=" pl-3 my-auto font-sans text-2xl font-bold text-teal-600 hover:text-red-400 hover:transition-colors">
               Portfolio.
             </h1>
@@ -57,196 +60,134 @@ export default function Header() {
               </a>
             </ul>
 
-            <button
+            <motion.button
               className={aboutMeButtonStyle}
               onClick={() => setboolean(!boolean)}
+              whileHover={{
+                rotate: ["0deg", "1.5deg", "-1.5deg", "0deg"],
+                ease: easeInOut,
+              }}
             >
               {boolean ? "about me (ON)" : "about me (OFF)"}
-            </button>
+            </motion.button>
           </div>
         </div>
-        <div className="flex">
+        <div className="flex-col">
           {hamburgerboolean ? (
-            <div className="bg-[#C70039] h-[233px] w-[200px] rounded-lg ml-2 text-white py-2 text-left transition-transform ease-in duration-1000 opacity-100">
-              <ul>
-                <div
-                  onClick={() => {
-                    setMode("objective");
-                    setboolean(false);
-                  }}
-                  className={
-                    "flex justify-between hover:text-red-400 hover:transition-color mx-2  rounded-lg border-white border-spacing-11 hover:bg-gray-800 ${true?bg-gray-800:bg-none}"
-                  }
-                >
-                  <li className="py-3 ml-8  mr-12  font-semibold hover:text-red-400 hover:transition-color">
+
+            <div className="flex-col">
+              <motion.div
+                className="border-2 border-teal-500 mx-auto w-[70%] rounded-full text-gray-900 py-1 text-center "
+                initial={{
+                  scale: "0%",
+                }}
+                animate={{
+                  scale: "100%",
+                }}
+                transition={{
+                  duration: 0.5,
+                  ease: easeInOut,
+                }}
+                exit={{
+                  scale: "0%",
+                }}
+              >
+                <ul className="flex justify-evenly px-2">
+                  <motion.li
+                    className={`py-3 font-semibold hover:text-red-400 hover:transition-color hover:bg-gray-800 rounded-full  w-[25%] ${
+                      mode === "objective" ? "bg-gray-800 text-red-500" : ""
+                    }`}
+                    onClick={() => setMode("objective")}
+                    whileHover={{
+                      rotate: ["0deg", "2.5deg", "-2.5deg", "0deg"],
+                      scale: 1.05,
+                    }}
+                  >
                     Objective
-                  </li>
-                </div>
-                <div
-                  onClick={() => {
-                    setMode("workexperience");
-                    setboolean(false);
-                  }}
-                  className="flex justify-between hover:text-red-400 hover:transition-color mx-2  rounded-lg border-white border-spacing-11 hover:bg-gray-800"
-                >
-                  <li className="py-3 ml-8 mr-12 font-semibold hover:text-red-400 hover:transition-color ">
+                  </motion.li>
+
+                  <motion.li
+                    onClick={() => {
+                      setMode("workexperience");
+                      setboolean(false);
+                    }}
+                    whileHover={{
+                      rotate: ["0deg", "2.5deg", "-2.5deg", "0deg"],
+                      scale: 1.05,
+                    }}
+                    className={`py-3 ml-8 mr-12 font-semibold hover:text-red-400 hover:transition-color hover:bg-gray-800 rounded-full  w-[25%] ${
+                      mode === "workexperience"
+                        ? "bg-gray-800 text-red-500"
+                        : ""
+                    }`}
+                  >
                     Work experience
-                  </li>
-                </div>
-                <div
-                  onClick={() => {
-                    setMode("toolsused");
-                    setboolean(false);
-                  }}
-                  className="flex justify-between hover:text-red-400 hover:transition-color mx-2  rounded-lg border-white border-spacing-11 hover:bg-gray-800"
-                >
-                  <li className="py-3 ml-8 mr-12 font-semibold hover:text-red-400 hover:transition-color">
-                    Tools Used
-                  </li>
-                </div>
-                <div
-                  onClick={() => {
-                    setMode("projectsundertaken");
-                    setboolean(false);
-                  }}
-                  className="flex justify-between hover:text-red-400 hover:transition-color mx-2  rounded-lg border-white border-spacing-11 hover:bg-gray-800"
-                >
-                  <li className="py-3 ml-8 mr-12 font-semibold hover:text-red-400 hover:transition-color">
+                  </motion.li>
+
+                  <motion.li
+                    onClick={() => {
+                      setMode("toolsused");
+                      setboolean(false);
+                    }}
+                    whileHover={{
+                      rotate: ["0deg", "2.5deg", "-2.5deg", "0deg"],
+                      scale: 1.05,
+                    }}
+                    className={`py-3 ml-8 mr-12 font-semibold hover:text-red-400 hover:transition-color hover:bg-gray-800 rounded-full  w-[25%] ${
+                      mode === "toolsused" ? "bg-gray-800 text-red-500" : ""
+                    }`}
+                  >
+                    ToolsUsed
+                  </motion.li>
+
+                  <motion.li
+                    onClick={() => {
+                      setMode("projectsundertaken");
+                      setboolean(false);
+                    }}
+                    whileHover={{
+                      rotate: ["0deg", "2.5deg", "-2.5deg", "0deg"],
+                      scale: 1.05,
+                    }}
+                    className={`py-3 font-semibold hover:text-red-400 hover:transition-color  hover:bg-gray-800 rounded-full w-[25%] ${
+                      mode === "projectsundertaken"
+                        ? "bg-gray-800 text-red-500"
+                        : ""
+                    } `}
+                  >
                     Skills
-                  </li>
-                </div>
-              </ul>
+                  </motion.li>
+                </ul>
+              </motion.div>
+              <div className="flex justify-evenly text-2xl animate-bounce text-red-500 my-4">
+                <IoIosArrowUp
+                  onClick={() => sethamburgerboolen(!hamburgerboolean)}
+                ></IoIosArrowUp>
+              </div>
+
             </div>
           ) : (
-            <div />
+            <div className="flex justify-evenly">
+              <FaChevronCircleDown
+                className="my-auto text-5xl hover:text-[#C70039] text-teal-500 animate-bounce"
+                onClick={() => sethamburgerboolen(!hamburgerboolean)}
+              ></FaChevronCircleDown>
+            </div>
           )}
           <div>
             {boolean ? (
-              <AboutMe></AboutMe>
+              <AboutMe className="transform transition-all scale-105"></AboutMe>
             ) : (
               <>
                 {mode === "objective" ? (
-                  <div className="mx-14 my-auto py-10 px-10 shadow-xl  rounded-lg transition-opacity delay-1000">
-                    {/* photo */}
-                    <div>
-                      <img
-                        src={targetpng}
-                        className="w-[150px] h-[100px] mx-auto"
-                      ></img>
-                    </div>
-                    <div className="text-middle  my-auto mx-5x">
-                      <h2 className="font-sans text-teal-600 font-bold text-xl">
-                        OBJECTIVE
-                      </h2>
-                      <p className="my-2 mx-3 text-slate-500">
-                        Motivated and skilled Java Backend Developer with 2
-                        years of hands-on experience in building
-                        high-performance and scalable server-side applications.
-                        <br />
-                        Proficient in Java, Spring Framework, and SQL databases.
-                        Seeking a challenging role to contribute my expertise in
-                        software development and problem-solving to deliver
-                        innovative solutions.
-                      </p>
-                    </div>
-                  </div>
+                  <Objective></Objective>
                 ) : mode === "workexperience" ? (
-                  <div className=" overflow-hidden mx-14 my-5 py-5 px-10  shadow-xl  rounded-lg  hover:transition-colors">
-                    <img
-                      src={workexperience}
-                      className="w-[120px] h-[120px] mx-auto my-3"
-                    ></img>
-
-                    <div className="text-middle my-auto mx-5x">
-                      <h2 className="font-sans font-bold text-xl text-teal-600">
-                        WORK EXPERIENCE
-                      </h2>
-                      <p className="my-2 mx-3 text-slate-400">
-                        Java Backend Developer, Tata Consultancy Services , Pune
-                        , Maharashtra. (Oct 2021 – Present) <br />
-                        Developed and maintained RESTful APIs for a large-scale
-                        logistic and mail platform using Spring Boot, resulting
-                        in improved user experience and increased customer
-                        satisfaction. <br /> Implemented caching mechanisms both
-                        in memory and centralized (Redis) and optimized database
-                        queries, leading to a 20% reduction in API response
-                        times.
-                        <br />
-                        Collaborated with the frontend team to design and
-                        implement API contracts, ensuring seamless integration
-                        between frontend and backend components. <br />
-                        Demonstrated strong problem-solving skills in
-                        identifying and resolving complex issues within the
-                        application. Reduced production defects by 30% . <br />{" "}
-                        Conducted unit testing and participated in code reviews
-                        to maintain code quality and identify potential issues.{" "}
-                        <br />
-                        Utilized SQL queries and Hibernate ORM to manage and
-                        optimize the database operations. <br /> Managed project
-                        dependencies efficiently using Maven/Gradle, ensuring a
-                        smooth build process and easy collaboration with team
-                        members. <br />
-                        Collaborated effectively in an Agile development
-                        environment using Scrum, participating in sprint
-                        planning and contributing to sprint goals. <br />{" "}
-                        Leveraged frameworks and libraries like Hibernate,
-                        Lombok, and Spring Cloud to enhance application
-                        functionality and development efficiency. <br />{" "}
-                        Maintained clear and comprehensive technical
-                        documentation for the codebase and APIs using Atlassian
-                        Confluence, facilitating better knowledge sharing within
-                        the team.
-                      </p>
-                    </div>
-                  </div>
+                  <Workexperience></Workexperience>
                 ) : mode === "toolsused" ? (
-                  <div className="my-5 py-5">
-                    <img
-                      src={toolsused}
-                      className="w-[100px] h-[100px] mx-auto mb-3"
-                    ></img>
-
-                    <div className="text-middle">
-                      <h2 className="font-sans font-bold text-xl text-teal-600">
-                        Tools Used
-                      </h2>
-                      <p className="my-2 mx-3 text-slate-500">
-                        IDE : Intellij Idea, Eclipse , Visual Studio Code ,
-                        Sublime Text , VIM. Database Clients : DBeaver(Universal
-                        Client), Pg Admin. API Testing : Postman. Git GUI Tools
-                        : Git Tortoise, Git GUI <br />
-                        Other Tools : Notepad++, Beyond compare,
-                      </p>
-                    </div>
-                  </div>
+                  <Toolsused></Toolsused>
                 ) : mode === "projectsundertaken" ? (
-                  <div className="mx-14 my-5 py-5 px-10">
-                    <img
-                      src={skills}
-                      className="w-[120px] h-[120px] mx-auto"
-                    ></img>
+                  <Skills></Skills>
 
-                    <div className="my-auto mx-5x">
-                      <h2 className="font-sans font-bold text-xl text-teal-600">
-                        Skills
-                      </h2>
-                      <p className="my-2 mx-3 text-slate-500">
-                        Programming Languages: Java, Javascript, SQL. <br />{" "}
-                        Java Frameworks: Spring Boot, Hibernate, React JS
-                        (Basics) Well versed with IDE such as Intellij idea ,
-                        Eclipse. RESTful API Design and Implementation Database
-                        Management: PostgreSQL Version Control: Git Build Tools:
-                        Maven Heavy user of Terminal based editors such as VIM
-                        (NeoVim). Familiarity with Agile Methodologies <br />
-                        Problem-Solving and Troubleshooting Skills <br /> Strong
-                        Team Player and Effective Communicator <br />
-                        Valuable experience working with the AWS Services such
-                        as EC2, S3, RDS, Lambda, SQS, SNS, VPC, EFS. <br />
-                        Among top 10% of Top typist in the world with reference
-                        to TypeRacer.
-                      </p>
-                    </div>
-                  </div>
                 ) : (
                   <div></div>
                 )}
