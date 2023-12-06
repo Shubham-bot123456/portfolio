@@ -20,29 +20,30 @@ export default function Toolsused() {
         scale: "0%",
       }}
     >
-      <motion.img
-        src={toolsused}
-        className=" w-[100px] h-[100px]  mx-auto"
-        initial={{
-          scale: 1,
-        }}
-        animate={{
-          scale: [1, 1.5, 1],
-        }}
-        transition={{
-          delay: 0.5,
-          duration: 0.75,
-          ease: easeInOut,
-        }}
-        exit={{
-          scale: 1,
-        }}
-        whileHover={{
-          rotate: ["0deg", "2.5deg", "-2.5deg", "0deg"],
-        }}
-      ></motion.img>
-
-      <div className="text-left px-6">
+      <div className="bg-gradient-to-tr from-pink-500 to-indigo-300 rounded-xl py-4">
+        <motion.img
+          src={toolsused}
+          className=" w-[100px] h-[100px]  mx-auto"
+          initial={{
+            scale: 1,
+          }}
+          animate={{
+            scale: [1, 1.5, 1],
+          }}
+          transition={{
+            delay: 0.5,
+            duration: 0.75,
+            ease: easeInOut,
+          }}
+          exit={{
+            scale: 1,
+          }}
+          whileHover={{
+            rotate: ["0deg", "2.5deg", "-2.5deg", "0deg"],
+          }}
+        ></motion.img>
+      </div>
+      <div className="text-left px-6 mt-2">
         <h2 className="font-sans font-bold text-xl text-teal-600">
           Tools Used
         </h2>

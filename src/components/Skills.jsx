@@ -20,29 +20,30 @@ export default function Skills() {
         scale: "0%",
       }}
     >
-      <motion.img
-        src={skills}
-        className="w-[120px] h-[120px] mx-auto "
-        initial={{
-          scale: 1,
-        }}
-        animate={{
-          scale: [1, 1.5, 1],
-        }}
-        transition={{
-          delay: 0.5,
-          duration: 0.75,
-          ease: easeInOut,
-        }}
-        exit={{
-          scale: 1,
-        }}
-        whileHover={{
-          rotate: ["0deg", "2.5deg", "-2.5deg", "0deg"],
-        }}
-      ></motion.img>
-
-      <div className="my-auto mx-5x text-left px-5">
+      <div className="bg-gradient-to-tr from-pink-500 to-indigo-300 rounded-xl py-4">
+        <motion.img
+          src={skills}
+          className="w-[120px] h-[120px] mx-auto "
+          initial={{
+            scale: 1,
+          }}
+          animate={{
+            scale: [1, 1.5, 1],
+          }}
+          transition={{
+            delay: 0.5,
+            duration: 0.75,
+            ease: easeInOut,
+          }}
+          exit={{
+            scale: 1,
+          }}
+          whileHover={{
+            rotate: ["0deg", "2.5deg", "-2.5deg", "0deg"],
+          }}
+        ></motion.img>
+      </div>
+      <div className="my-auto mx-5x text-left px-5 mt-3">
         <h2 className="font-sans font-bold text-2xl text-teal-600">SKILLS</h2>
         <p className="my-2 mx-3 text-slate-500">
           <p>Programming Languages: Java, Javascript, SQL.</p>

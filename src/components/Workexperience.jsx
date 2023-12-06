@@ -18,35 +18,37 @@ export default function Workexperience() {
       exit={{
         scale: "0%",
       }}
-      className="flex-row  mx-14 my-5 py-5 px-10  shadow-xl  rounded-xl  transform transition-all scale-100 duration-700 border-2 border-teal-600 "
+      className="flex-row  mx-14 my-5 py-5 px-10  shadow-xl  rounded-xl  transform transition-all scale-100 duration-700 border-2 border-teal-600 w-[70%]"
     >
-      <motion.img
-        src={workexperience}
-        className="w-[120px] h-[120px] mx-auto my-3  my-auto"
-        initial={{
-          scale: 1,
-        }}
-        animate={{
-          scale: [1, 1.5, 1],
-        }}
-        transition={{
-          delay: 0.5,
-          duration: 0.75,
-          ease: easeInOut,
-        }}
-        exit={{
-          scale: 1,
-        }}
-        whileHover={{
-          rotate: ["0deg", "2.5deg", "-2.5deg", "0deg"],
-        }}
-      ></motion.img>
-      <div className="text-left my-auto mx-5x">
+      <div className="bg-gradient-to-tr from-pink-500 to-indigo-300 rounded-xl py-4">
+        <motion.img
+          src={workexperience}
+          className="w-[120px] h-[120px] mx-auto my-3  my-auto"
+          initial={{
+            scale: 1,
+          }}
+          animate={{
+            scale: [1, 1.5, 1],
+          }}
+          transition={{
+            delay: 0.5,
+            duration: 0.75,
+            ease: easeInOut,
+          }}
+          exit={{
+            scale: 1,
+          }}
+          whileHover={{
+            rotate: ["0deg", "2.5deg", "-2.5deg", "0deg"],
+          }}
+        ></motion.img>
+      </div>
+      <div className="text-left my-auto mx-5x mt-3">
         <h2 className="align-middle font-sans font-bold text-xl text-teal-600">
           WORK EXPERIENCE
         </h2>
         <p className="my-2 mx-3 text-slate-500">
-          <p>
+          <p className="text-red-600">
             Java Backend Developer, Tata Consultancy Services , Pune ,
             Maharashtra. (Oct 2021 – Present){" "}
           </p>

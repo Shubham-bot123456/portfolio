@@ -10,7 +10,8 @@ import { easeInOut, motion } from "framer-motion";
 import { IoIosArrowUp } from "react-icons/io";
 import Workexperience from "./Workexperience";
 import Skills from "./Skills";
-
+import HamburgerMenu from "./HamburgerMenu";
+import Footer from "./Footer";
 
 export default function Header() {
   const [boolean, setboolean] = useState(true);
@@ -19,7 +20,6 @@ export default function Header() {
   const [aboutMeButtonStyle, setStyleAboutMe] = useState(
     "text-white bg-gray-800 rounded-xl px-10 py-2.3 font-semibold  hover:text-teal-600 hover:transition-color"
   );
-
 
   useEffect(() => {
     if (boolean)
@@ -33,9 +33,9 @@ export default function Header() {
   }, [boolean]);
 
   return (
-    <div className="flex flex-col justify-between">
-      <div className="bg-gray-100 h-screen overflow-y-auto ">
-        <div className="flex justify-between px-5 py-3 ">
+    <div className=" flex-col justify-between">
+      <div className="bg-gray-900 h-screen overflow-y-auto">
+        <div className="flex justify-between px-5 py-3">
           <div className="flex justify-evenly">
             <h1 className=" pl-3 my-auto font-sans text-2xl font-bold text-teal-600 hover:text-red-400 hover:transition-colors">
               Portfolio.
@@ -74,97 +74,17 @@ export default function Header() {
         </div>
         <div className="flex-col">
           {hamburgerboolean ? (
-
             <div className="flex-col">
-              <motion.div
-                className="border-2 border-teal-500 mx-auto w-[70%] rounded-full text-gray-900 py-1 text-center "
-                initial={{
-                  scale: "0%",
-                }}
-                animate={{
-                  scale: "100%",
-                }}
-                transition={{
-                  duration: 0.5,
-                  ease: easeInOut,
-                }}
-                exit={{
-                  scale: "0%",
-                }}
-              >
-                <ul className="flex justify-evenly px-2">
-                  <motion.li
-                    className={`py-3 font-semibold hover:text-red-400 hover:transition-color hover:bg-gray-800 rounded-full  w-[25%] ${
-                      mode === "objective" ? "bg-gray-800 text-red-500" : ""
-                    }`}
-                    onClick={() => setMode("objective")}
-                    whileHover={{
-                      rotate: ["0deg", "2.5deg", "-2.5deg", "0deg"],
-                      scale: 1.05,
-                    }}
-                  >
-                    Objective
-                  </motion.li>
-
-                  <motion.li
-                    onClick={() => {
-                      setMode("workexperience");
-                      setboolean(false);
-                    }}
-                    whileHover={{
-                      rotate: ["0deg", "2.5deg", "-2.5deg", "0deg"],
-                      scale: 1.05,
-                    }}
-                    className={`py-3 ml-8 mr-12 font-semibold hover:text-red-400 hover:transition-color hover:bg-gray-800 rounded-full  w-[25%] ${
-                      mode === "workexperience"
-                        ? "bg-gray-800 text-red-500"
-                        : ""
-                    }`}
-                  >
-                    Work experience
-                  </motion.li>
-
-                  <motion.li
-                    onClick={() => {
-                      setMode("toolsused");
-                      setboolean(false);
-                    }}
-                    whileHover={{
-                      rotate: ["0deg", "2.5deg", "-2.5deg", "0deg"],
-                      scale: 1.05,
-                    }}
-                    className={`py-3 ml-8 mr-12 font-semibold hover:text-red-400 hover:transition-color hover:bg-gray-800 rounded-full  w-[25%] ${
-                      mode === "toolsused" ? "bg-gray-800 text-red-500" : ""
-                    }`}
-                  >
-                    ToolsUsed
-                  </motion.li>
-
-                  <motion.li
-                    onClick={() => {
-                      setMode("projectsundertaken");
-                      setboolean(false);
-                    }}
-                    whileHover={{
-                      rotate: ["0deg", "2.5deg", "-2.5deg", "0deg"],
-                      scale: 1.05,
-                    }}
-                    className={`py-3 font-semibold hover:text-red-400 hover:transition-color  hover:bg-gray-800 rounded-full w-[25%] ${
-                      mode === "projectsundertaken"
-                        ? "bg-gray-800 text-red-500"
-                        : ""
-                    } `}
-                  >
-                    Skills
-                  </motion.li>
-                </ul>
-              </motion.div>
+              <HamburgerMenu
+                somemode={setMode}
+                boolean={setboolean}
+                currentMode={mode}
+              ></HamburgerMenu>
               <div className="flex justify-evenly text-2xl animate-bounce text-red-500 my-4">
                 <IoIosArrowUp
                   onClick={() => sethamburgerboolen(!hamburgerboolean)}
                 ></IoIosArrowUp>
               </div>
-
             </div>
           ) : (
             <div className="flex justify-evenly">
@@ -174,7 +94,7 @@ export default function Header() {
               ></FaChevronCircleDown>
             </div>
           )}
-          <div>
+          <div className="flex justify-evenly">
             {boolean ? (
               <AboutMe className="transform transition-all scale-105"></AboutMe>
             ) : (
@@ -187,26 +107,15 @@ export default function Header() {
                   <Toolsused></Toolsused>
                 ) : mode === "projectsundertaken" ? (
                   <Skills></Skills>
-
                 ) : (
                   <div></div>
                 )}
               </>
             )}
-
-            {/* footer */}
-            {/* <div className="bg-[#FFC300] px-12 text-left py-4 inline-block align-bottom">
-            <h2 className="text-2xl font-sans font-semibold text-white">
-              Thank you !
-            </h2>
-          </div> */}
           </div>
         </div>
       </div>
-      <div className="bg-[#C70039]  flex justify-between px-36 sm-flex col">
-        <h2 className="text-slate-400 text-md">CopyRight@2021</h2>
-        <h2 className="text-slate-400 text-md">All Rights Reserved</h2>
-      </div>
+      <Footer></Footer>
     </div>
   );
 }
