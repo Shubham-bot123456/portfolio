@@ -12,32 +12,33 @@ import Workexperience from "./Workexperience";
 import Skills from "./Skills";
 import HamburgerMenu from "./HamburgerMenu";
 import Footer from "./Footer";
+import { MdOutlineArrowDropDownCircle } from "react-icons/md";
 
 export default function Header() {
   const [boolean, setboolean] = useState(true);
   const [hamburgerboolean, sethamburgerboolen] = useState(false);
   const [mode, setMode] = useState("objective");
   const [aboutMeButtonStyle, setStyleAboutMe] = useState(
-    "text-white bg-gray-800 rounded-xl px-10 py-2.3 font-semibold  hover:text-teal-600 hover:transition-color"
+    "text-white bg-gray-800 rounded-xl px-10 py-2.3 font-semibold  hover:text-teal-600 hover:transition-color font-mono"
   );
 
   useEffect(() => {
     if (boolean)
       setStyleAboutMe(
-        "text-teal-600 bg-gray-800 rounded-xl px-10 py-2.3 font-semibold  hover:text-teal-600 hover:transition-color border-2 border-teal-600 border-spacing-2"
+        "text-teal-600 bg-gray-800 rounded-xl px-10 py-2.3 font-semibold  hover:text-teal-600 hover:transition-color border-2 border-teal-600 border-spacing-2 font-mono"
       );
     else
       setStyleAboutMe(
-        "text-slate-500 bg-gray-800 rounded-xl px-10 py-2.3 font-semibold  hover:text-teal-600 hover:transition-color"
+        "text-slate-500 bg-gray-800 rounded-xl px-10 py-2.3 font-semibold  hover:text-teal-600 hover:transition-color font-mono"
       );
   }, [boolean]);
 
   return (
-    <div className=" flex-col justify-between">
+    <div className=" flex-col justify-between font-mono">
       <div className="bg-gray-900 h-screen overflow-y-auto">
-        <div className="flex justify-between px-5 py-3">
+        <div className="md:flex justify-between px-5 py-3">
           <div className="flex justify-evenly">
-            <h1 className=" pl-3 my-auto font-sans text-2xl font-bold text-teal-600 hover:text-red-400 hover:transition-colors">
+            <h1 className=" pl-3 my-auto font-mono text-2xl font-bold text-teal-600 hover:text-red-400 hover:transition-colors">
               Portfolio.
             </h1>
             <p className="text-slate-400 font-semibold inline-block align-baseline my-auto mx-4">
@@ -68,7 +69,7 @@ export default function Header() {
                 ease: easeInOut,
               }}
             >
-              {boolean ? "about me (ON)" : "about me (OFF)"}
+              {boolean ? "ABOUT ME (ON)" : "ABOUT ME (OFF)"}
             </motion.button>
           </div>
         </div>
@@ -88,10 +89,10 @@ export default function Header() {
             </div>
           ) : (
             <div className="flex justify-evenly">
-              <FaChevronCircleDown
+              <MdOutlineArrowDropDownCircle
                 className="my-auto text-5xl hover:text-[#C70039] text-teal-500 animate-bounce"
                 onClick={() => sethamburgerboolen(!hamburgerboolean)}
-              ></FaChevronCircleDown>
+              ></MdOutlineArrowDropDownCircle>
             </div>
           )}
           <div className="flex justify-evenly">

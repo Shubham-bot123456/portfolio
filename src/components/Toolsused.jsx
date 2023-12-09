@@ -5,7 +5,7 @@ import toolsused from "./toolsusing.png";
 export default function Toolsused() {
   return (
     <motion.div
-      className="flex flex-col rounded-xl border-2 border-teal-600 mx-14 my-5 py-5 px-10 rounded-xl  transform transition-all scale-100 duration-700"
+      className="flex flex-col border-dashed  rounded-xl border-2 border-teal-600 mx-14 my-5 py-5 px-10 transform transition-all scale-100 duration-700 w-[70%]"
       initial={{
         scale: "0%",
       }}
@@ -44,18 +44,24 @@ export default function Toolsused() {
         ></motion.img>
       </div>
       <div className="text-left px-6 mt-2">
-        <h2 className="font-sans font-bold text-xl text-teal-600">
-          Tools Used
+        <h2 className="font-mono font-bold text-xl text-teal-600">
+          TOOLS USED
         </h2>
         <p className="my-2 mx-3 text-slate-500">
-          <p>
+          <p className="py-2 hover:text-red-500">
             IDE : Intellij Idea, Eclipse , Visual Studio Code , Sublime Text ,
             VIM.
           </p>
-          <p>Database Clients : DBeaver(Universal Client), Pg Admin.</p>
-          <p>API Testing : Postman.</p>
-          <p>Git GUI Tools: Git Tortoise, Git GUI</p>
-          <p>Other Tools : Notepad++, Beyond compare</p>
+          <p className="py-2 hover:text-red-500">
+            Database Clients : DBeaver(Universal Client), Pg Admin.
+          </p>
+          <p className="py-2 hover:text-red-500">API Testing : Postman.</p>
+          <p className="py-2 hover:text-red-500">
+            Git GUI Tools: Git Tortoise, Git GUI
+          </p>
+          <p className="py-2 hover:text-red-500">
+            Other Tools : Notepad++, Beyond compare
+          </p>
         </p>
       </div>
     </motion.div>

@@ -4,7 +4,7 @@ import { motion, easeInOut } from "framer-motion";
 export default function HamburgerMenu(props) {
   return (
     <motion.div
-      className="border-2 border-teal-500 mx-auto lg:w-[70%] sm:w-[30%] lg:rounded-full rounded-xl text-gray-900 py-1 text-center bg-teal-600"
+      className="my-4 border-2 border-teal-500 mx-auto lg:w-[70%] w-[70%] lg:rounded-full rounded-xl text-gray-900 py-1 text-center bg-teal-600"
       initial={{
         scale: "0%",
       }}

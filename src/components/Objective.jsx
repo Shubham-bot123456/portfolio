@@ -1,10 +1,11 @@
 import React from "react";
 import targetpng from "./targetpng.png";
 import { motion, easeInOut } from "framer-motion";
+import { FaAnglesRight } from "react-icons/fa6";
 export default function Objective() {
   return (
     <motion.div
-      className="flex flex-col my-5 mx-14 py-5 px-10 shadow-xl   tranform transition-all scale-100 duration-500 border-2 border-teal-600 rounded-xl w-[70%]"
+      className="flex flex-col my-5 mx-14 py-5 px-10 shadow-xl border-dashed  tranform transition-all scale-100 duration-500 border-2 border-teal-600 rounded-xl w-[70%]"
       initial={{
         scale: "0%",
       }}
@@ -42,19 +43,18 @@ export default function Objective() {
           }}
         ></motion.img>
       </div>
-      <div className="text-middle  my-auto mx-5x text-left px-2 mt-6">
-        <h2 className="font-sans text-teal-600 font-bold text-xl">Objective</h2>
-        <p className="my-2 mx-3 text-slate-500">
-          <p>
-            Motivated and skilled Java Backend Developer with 2 years of
-            hands-on experience in building high-performance and scalable
-            server-side applications.
-          </p>
-          <p>
-            Proficient in Java, Spring Framework, and SQL databases. Seeking a
-            challenging role to contribute my expertise in software development
-            and problem-solving to deliver innovative solutions.
-          </p>
+      <div className="text-middle  my-auto mx-5x text-left px-2 mt-6 my-2 mx-3 text-slate-500">
+        <h2 className="font-mono text-teal-600 font-bold text-xl">OBJECTIVE</h2>
+
+        <p className="py-2 hover:text-red-500">
+          Motivated and skilled Java Backend Developer with 2 years of hands-on
+          experience in building high-performance and scalable server-side
+          applications.
+        </p>
+        <p className="py-2 hover:text-red-500">
+          Proficient in Java, Spring Framework, and SQL databases. Seeking a
+          challenging role to contribute my expertise in software development
+          and problem-solving to deliver innovative solutions.
         </p>
       </div>
     </motion.div>
