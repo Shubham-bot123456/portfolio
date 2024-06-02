@@ -21,7 +21,7 @@ export default function Aboutme() {
   }, [new Date().getTime() / 200]);
   return (
     <motion.div
-      className="lg:flex justify-evenly mx-14 my-5 py-5 px-10 transform transition-all focus:scale-100 focus:duration-1000 w-[100%]"
+      className="h-[100%] lg:flex justify-evenly mx-14 my-5 py-5 px-10 transform transition-all focus:scale-100 focus:duration-1000 w-[100%]"
       initial={{
         scale: "0%",
       }}
@@ -88,6 +88,7 @@ export default function Aboutme() {
           <p className="my-auto text-md">Contact Me</p>
           <PiWhatsappLogo className="text-3xl"></PiWhatsappLogo>
         </motion.div>
+     
       </div>
     </motion.div>
   );

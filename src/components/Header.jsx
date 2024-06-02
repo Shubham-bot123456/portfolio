@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
 import AboutMe from "./Aboutme";
-
-import { FaChevronCircleDown } from "react-icons/fa";
 import Toolsused from "./Toolsused";
-
 import Objective from "./Objective";
 import { easeInOut, motion } from "framer-motion";
 import { IoIosArrowUp } from "react-icons/io";
@@ -12,31 +9,31 @@ import Workexperience from "./Workexperience";
 import Skills from "./Skills";
 import HamburgerMenu from "./HamburgerMenu";
 import Footer from "./Footer";
-import { MdOutlineArrowDropDownCircle } from "react-icons/md";
 
+import { MdOutlineArrowDropDownCircle } from "react-icons/md";
 export default function Header() {
   const [boolean, setboolean] = useState(true);
   const [hamburgerboolean, sethamburgerboolen] = useState(false);
   const [mode, setMode] = useState("objective");
   const [aboutMeButtonStyle, setStyleAboutMe] = useState(
-    "text-white bg-gray-800 rounded-xl px-10 py-2.3 font-semibold  hover:text-teal-600 hover:transition-color font-mono"
+    "text-white bg-gray-800 rounded-xl px-10 py-2.3 font-semibold  hover:text-teal-600 hover:transition-color font-mono relative"
   );
 
   useEffect(() => {
     if (boolean)
       setStyleAboutMe(
-        "text-teal-600 bg-gray-800 rounded-xl px-10 py-2.3 font-semibold  hover:text-teal-600 hover:transition-color border-2 border-teal-600 border-spacing-2 font-mono"
+        "relative text-teal-600 bg-gray-800 rounded-xl px-10 py-2.3 font-semibold  hover:text-teal-600 hover:transition-color border-2 border-teal-600 border-spacing-2 font-mono"
       );
     else
       setStyleAboutMe(
-        "text-slate-500 bg-gray-800 rounded-xl px-10 py-2.3 font-semibold  hover:text-teal-600 hover:transition-color font-mono"
+        "relative text-slate-500 bg-gray-800 rounded-xl px-10 py-2.3 font-semibold  hover:text-teal-600 hover:transition-color font-mono"
       );
   }, [boolean]);
 
   return (
-    <div className=" flex-col justify-between font-mono">
-      <div className="bg-gray-900 h-screen overflow-y-auto">
-        <div className="md:flex justify-between px-5 py-3">
+    <div className=" flex-col justify-between font-mono cursor-pointer">
+      <div className="bg-gray-900 h-[100%] pb-10 md:pb-4">
+        <div className="md:flex justify-between px-5 py-3 fixed top-0 left-0 right-0 z-40 bg-gray-900">
           <div className="flex justify-evenly">
             <h1 className=" pl-3 my-auto font-mono text-2xl font-bold text-teal-600 hover:text-red-400 hover:transition-colors">
               Portfolio.
@@ -70,49 +67,78 @@ export default function Header() {
               }}
             >
               {boolean ? "ABOUT ME (ON)" : "ABOUT ME (OFF)"}
+              {/* this is green point display on the right top */}
+              {boolean ? (
+                <div
+                  style={{
+                    backgroundColor: "green",
+                    borderRadius: "100%",
+                    width: "10px",
+                    height: "10px",
+                    position: "absolute",
+                    top: "-3px",
+                    right: "-3px",
+                  }}
+                ></div>
+              ) : (
+                <div
+                  style={{
+                    backgroundColor: "red",
+                    borderRadius: "100%",
+                    width: "10px",
+                    height: "10px",
+                    position: "absolute",
+                    top: "-3px",
+                    right: "-3px",
+                  }}
+                ></div>
+              )}
             </motion.button>
           </div>
         </div>
-        <div className="flex-col">
-          {hamburgerboolean ? (
-            <div className="flex-col">
-              <HamburgerMenu
-                somemode={setMode}
-                boolean={setboolean}
-                currentMode={mode}
-              ></HamburgerMenu>
-              <div className="flex justify-evenly text-2xl animate-bounce text-red-500 my-4">
-                <IoIosArrowUp
-                  onClick={() => sethamburgerboolen(!hamburgerboolean)}
-                ></IoIosArrowUp>
+
+        <div className="h-[85%] pt-[100px] md:pt-[70px] ">
+          <div className="flex-col">
+            {hamburgerboolean ? (
+              <div className="flex-col">
+                <HamburgerMenu
+                  somemode={setMode}
+                  boolean={setboolean}
+                  currentMode={mode}
+                ></HamburgerMenu>
+                <div className="flex justify-evenly text-2xl animate-bounce text-red-500 my-4">
+                  <IoIosArrowUp
+                    onClick={() => sethamburgerboolen(!hamburgerboolean)}
+                  ></IoIosArrowUp>
+                </div>
               </div>
-            </div>
-          ) : (
-            <div className="flex justify-evenly">
-              <MdOutlineArrowDropDownCircle
-                className="my-auto text-5xl hover:text-[#C70039] text-teal-500 animate-bounce"
-                onClick={() => sethamburgerboolen(!hamburgerboolean)}
-              ></MdOutlineArrowDropDownCircle>
-            </div>
-          )}
-          <div className="flex justify-evenly">
-            {boolean ? (
-              <AboutMe className="transform transition-all scale-105"></AboutMe>
             ) : (
-              <>
-                {mode === "objective" ? (
-                  <Objective></Objective>
-                ) : mode === "workexperience" ? (
-                  <Workexperience></Workexperience>
-                ) : mode === "toolsused" ? (
-                  <Toolsused></Toolsused>
-                ) : mode === "projectsundertaken" ? (
-                  <Skills></Skills>
-                ) : (
-                  <div></div>
-                )}
-              </>
+              <div className="flex justify-evenly">
+                <MdOutlineArrowDropDownCircle
+                  className="my-auto text-5xl hover:text-[#C70039] text-teal-500 animate-bounce"
+                  onClick={() => sethamburgerboolen(!hamburgerboolean)}
+                ></MdOutlineArrowDropDownCircle>
+              </div>
             )}
+            <div className="flex justify-evenly">
+              {boolean ? (
+                <AboutMe className="transform transition-all scale-105"></AboutMe>
+              ) : (
+                <>
+                  {mode === "objective" ? (
+                    <Objective></Objective>
+                  ) : mode === "workexperience" ? (
+                    <Workexperience></Workexperience>
+                  ) : mode === "toolsused" ? (
+                    <Toolsused></Toolsused>
+                  ) : mode === "projectsundertaken" ? (
+                    <Skills></Skills>
+                  ) : (
+                    <div></div>
+                  )}
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>

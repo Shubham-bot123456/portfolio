@@ -1,13 +1,7 @@
 import logo from "./logo.svg";
+import Header from "./components/Header.jsx";
 import "./App.css";
-import Header from "./components/Header";
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-    </div>
-  );
+export default function App() {
+  return <Header></Header>;
 }
-
-export default App;
